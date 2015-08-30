@@ -687,3 +687,8 @@ span.theorem_label {
 .maruku_toc ul {
   list-style: none;
 }
+
+#revision a {
+  font-weight: 400;
+  color: #393;
+}
