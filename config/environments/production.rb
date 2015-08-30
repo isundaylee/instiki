@@ -5,13 +5,11 @@ config.cache_classes = true
 # Use a different logger for distributed setups
 # config.logger        = SyslogLogger.new
 
-####
-# This rotates the log file, keeping 25 files, of 1MB each.
-
-config.action_controller.logger = Logger.new(Rails.root.join('log', "#{RAILS_ENV}.log"), 25, 1024000)
+config.logger = Logger.new(STDOUT)
+config.logger.level = Logger::ERROR
 
 # Unfortunately, the above does not work well under Mongrel, as the default Ruby logger class
-# does no locking and you will have several processes running, each wanting to write to (and 
+# does no locking and you will have several processes running, each wanting to write to (and
 # rotate) the log file. One solution is to have each mongrel instance writes to a different log file:
 #   http://blog.caboo.se/articles/2006/11/14/configure-mongrel-rails-logger-per-port for a solution.
 # Another is to use the default logging behaviour (comment out the above line)
